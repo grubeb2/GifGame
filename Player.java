@@ -1,11 +1,15 @@
+package GifGame;
+
 import java.util.HashSet;
 
 public class Player {
 
+	HashSet<Gif> hand;
+	boolean judge;
+
 	public Player(){
-		HashSet<String> hand = new HashSet<String>();
-		boolean judge = false;
-		start();
+		hand = new HashSet<Gif>();
+		judge = false;
 	}
 	
 	public void addGif(Gif gif){

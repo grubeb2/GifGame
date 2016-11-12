@@ -1,12 +1,13 @@
+package GifGame;
 
 public class Gif {
 
-	public Gif(String aUrl, ){
+	public Gif(String aUrl){
 
 	}
 
 	public void open(){
-		
+
 	}
 
 }
