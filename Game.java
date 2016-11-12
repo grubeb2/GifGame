@@ -37,7 +37,7 @@ public class Game {
 		for (int i=0; i<numberPlayers; i++){
 			addPlayer();
 		}
-		dealInitialGifts();
+		dealInitialGifs();
 	}
 
 	public Gif acquireNewGif()
@@ -55,13 +55,13 @@ public class Game {
 		
 	}
 
-	public void dealInitialGifts(){
+	public void dealInitialGifs(){
 		
 		for (Player player : players){
 
 		    for (int i=0; i<NUM_GIFS_HAND; i++){
 				try{
-		    		deck.add(acquireNewGif());	
+		    		player.add(deck.poll());
 		    	}
 		    	catch (MalformedURLException e){
 		    		System.out.println("ERROR, MalformedURLException!");
