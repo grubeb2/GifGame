@@ -1,4 +1,3 @@
-package giffy;
 import java.util.HashSet;
 
 public class Player {
@@ -9,12 +8,7 @@ public class Player {
 		start();
 	}
 	
-	//fills hands with gifs
-	public void start(){
-		
-	}
-	
-	public void addGif(){
-		if
+	public void addGif(Gif gif){
+		hand.add(gif);
 	}
 }
