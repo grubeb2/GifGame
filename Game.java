@@ -1,6 +1,8 @@
 package GifGame;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Iterator;
 import java.nio.file.*;
 import java.io.File;
@@ -15,8 +17,8 @@ public class Game {
 	final String gifDirectory = "GifDirectory";
 	final int TOTAL_NUMBER_GIFS = 200;
 
-	HashSet<Player> players = new HashSet<Player>();
-	HashSet<Gif> deck = new HashSet<Gif>();
+	ArrayList<Player> players = new ArrayList<Player>();
+	Queue<Gif> deck = new LinkedList<Gif>();
 
 	public Game(int numberPlayers){
 

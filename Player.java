@@ -1,15 +1,15 @@
 package GifGame;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.net.MalformedURLException;
 
 public class Player {
 
-	HashSet<Gif> hand;
+	ArrayList<Gif> hand;
 	boolean judge;
 
 	public Player(){
-		hand = new HashSet<Gif>();
+		hand = new ArrayList<Gif>();
 		judge = false;
 	}
 	
