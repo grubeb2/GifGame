@@ -98,8 +98,11 @@ public class Game {
 	}
 	
 	public void round(int judge, boolean endgame){
+		String prompt = prompts.poll();
+		int i = 0;
 		for(Player play: players){
-			
+			if(i != judge)
+				play.go();
 		}
 	}
 
