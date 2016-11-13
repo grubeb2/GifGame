@@ -1,13 +1,14 @@
 package GifGame;
 
 import java.net.URL;
+import java.awt.Image;
 
 public class Gif {
 
-	URL url;
+	Image image;
 
-	public Gif(URL aUrl){
-		url = aUrl;
+	public Gif(Image anImage){
+		image = anImage;
 	}
 
 	public void open(){

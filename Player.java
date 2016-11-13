@@ -22,21 +22,20 @@ public class Player {
 		}
 	}
 	
-	public ArrayList<Gif> submit(ArrayList<Gif> thing){
-		return thing;
+	public ArrayList<Gif> submit(ArrayList<Gif> submission){
+		return submission;
 	}
 	
-	public void discard(ArrayList<Gif> thing){
-		for(Gif part: thing)
-			hand.remove(part);
+	public void discard(ArrayList<Gif> gifList){
+		for(Gif gif: gifList)
+			hand.remove(gif);
 	}
 	
 	public void isJudge(){
 		judge = true;
 	}
 	
-	public ArrayList<Gif> judgeChoice(ArrayList<ArrayList<Gif>> choices, int n){
-		//ArrayList<Gif> answer = new ArrayList<Gif>();
-		return choices.get(n);
+	public ArrayList<Gif> judgeChoice(ArrayList<ArrayList<Gif>> gifList, int choice){
+		return gifList.get(choice);
 	}
 }
