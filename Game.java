@@ -73,6 +73,23 @@ public class Game {
 
 		}
 	}
+	
+	public void game(){
+		boolean winner = false;
+		int startJudge = 0;
+		while(winner != true){
+			round( startJudge, winner);
+			startJudge++;
+			if(startJudge == players.size())
+				startJudge = 0;
+		}
+	}
+	
+	public void round(int judge, boolean endgame){
+		for(Player play: players){
+			
+		}
+	}
 
 	public void addPlayer(){
 		//create new player
