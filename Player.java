@@ -5,12 +5,18 @@ import java.net.MalformedURLException;
 
 public class Player {
 	final int NUM_GIFS_HAND = 5;
-	ArrayList<Gif> hand;
-	boolean judge;
+	String name;
+	int pid;
+	int score = 0;
+	boolean isJudge;
 
-	public Player(){
+	ArrayList<Gif> hand;
+	ArrayList<Gif> listToJudge;
+
+	public Player(int id){
+		id = pid;
 		hand = new ArrayList<Gif>();
-		judge = false;
+		isJudge = false;
 	}
 	
 	public void addGif(Gif gif)
@@ -22,20 +28,41 @@ public class Player {
 		}
 	}
 	
-	public ArrayList<Gif> submit(ArrayList<Gif> submission){
+
+	//index is the index of this player in the playerlist passed when submit is called
+	public ArrayList<Gif> submit(ArrayList<Gif> submission, int index){
+
+		for(Gif gif: submission)
+			hand.remove(gif);
+
 		return submission;
 	}
 	
-	public void discard(ArrayList<Gif> gifList){
-		for(Gif gif: gifList)
-			hand.remove(gif);
+	public boolean isJudge(){
+		return isJudge;
 	}
 	
-	public void isJudge(){
-		judge = true;
+	public void setJudge(boolean judge){
+		isJudge = judge;
+		if (!isJudge){
+			listToJudge.clear();
+		}
 	}
-	
-	public ArrayList<Gif> judgeChoice(ArrayList<ArrayList<Gif>> gifList, int choice){
-		return gifList.get(choice);
+
+	public void displayGif(Gif gif){
+
 	}
+
+	public void setName(String aName){
+		name = aName;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public int incrementScore(){
+		return score++;
+	}
+
 }

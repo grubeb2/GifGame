@@ -29,7 +29,7 @@ public class Game {
 		loadGifUrls();
 
 		for (int i=0; i<numberPlayers; i++){
-			addPlayer();
+			addPlayer(new Player(i));
 		}
 		dealInitialGifs();
 	}
@@ -47,7 +47,7 @@ public class Game {
 		} catch (IOException e) {
 			System.out.println("ERROR, could not open GIF at " + source);
 		}
-		return new Gif(image);
+		return new Gif(image, source);
 		
 	}
 
@@ -85,27 +85,75 @@ public class Game {
 		}
 
 	}
-	
-	public void game(){
-		boolean winner = false;
-		int startJudge = 0;
-		while(winner != true){
-			round( startJudge, winner);
-			startJudge++;
-			if(startJudge == players.size())
-				startJudge = 0;
-		}
-	}
-	
-	public void round(int judge, boolean endgame){
-		for(Player play: players){
-			
-		}
+
+	public void addPlayer(Player player){
+		
+		players.add(player);
+
 	}
 
-	public void addPlayer(){
-		//create new player
-		// players.add(player);
+	public int requestSubmission(Player player, int index){
+		return -1;
+	}
 
+	public int requestChoice(Player player){
+		return -1;
+	}
+
+	public void startGame(){
+
+		int judgeIndex = 0;
+		int startIndex = judgeIndex+1;
+		int highestScore = 0;
+
+		while (true){
+			startIndex = judgeIndex+1;
+			players.get(judgeIndex).setJudge(true);
+
+			if (startIndex == players.size())
+				startIndex = 0;
+			if ( false ) // Ben TODO change to if quit is entered somehow
+				break;
+
+			while (true){
+				if (startIndex == judgeIndex)
+					break;
+
+				requestSubmission(players.get(startIndex), startIndex);
+				Gif nextGif = null;
+				try  {
+					nextGif = acquireNewGif(deck.poll());
+					players.get(startIndex).addGif(nextGif);
+				}
+				catch (MalformedURLException e){
+					System.out.println("ERROR, MalformedURLException!");
+				}
+				catch (IOException e){
+					System.out.println("ERROR, IOException");
+				}
+				players.get(startIndex).displayGif(nextGif);
+				startIndex++;
+
+				if (startIndex == players.size())
+					startIndex = 0;
+			}
+
+			int winningIndex = requestChoice(players.get(judgeIndex));
+			if (players.get(winningIndex).incrementScore() > highestScore){
+				highestScore = players.get(winningIndex).incrementScore();
+				if (highestScore == 10){
+					System.out.println("Player " + players.get(startIndex).getName() + " is the winner with 10 points!");
+					break;
+				}
+			}
+
+
+			//end round
+			players.get(judgeIndex).setJudge(false);
+			judgeIndex++;
+			if (judgeIndex == players.size())
+				judgeIndex = 0;
+
+		}
 	}
 }
