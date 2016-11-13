@@ -7,10 +7,12 @@ public class Player {
 	final int NUM_GIFS_HAND = 5;
 	ArrayList<Gif> hand;
 	boolean judge;
-
-	public Player(){
+	String Name;
+	
+	public Player(String s){
 		hand = new ArrayList<Gif>();
 		judge = false;
+		Name = s;
 	}
 	
 	public void addGif(Gif gif)
@@ -20,6 +22,10 @@ public class Player {
 		{
 			hand.add(gif);
 		}
+	}
+	
+	public String getName(){
+		return Name;
 	}
 	
 	public ArrayList<Gif> submit(ArrayList<Gif> submission){
