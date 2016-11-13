@@ -34,7 +34,6 @@ public class Player {
 
 		for(Gif gif: submission)
 			hand.remove(gif);
-
 		return submission;
 	}
 	
